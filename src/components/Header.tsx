@@ -12,7 +12,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            size="large"
+            size="medium"
             edge="start"
             color="inherit"
             aria-label="menu"
@@ -23,6 +23,7 @@ export default function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             FretesApp
           </Typography>
+          <Button color="inherit">Sign-in</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
