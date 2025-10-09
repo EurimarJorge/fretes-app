@@ -12,7 +12,7 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            size="medium"
+            size="large"
             edge="start"
             color="inherit"
             aria-label="menu"

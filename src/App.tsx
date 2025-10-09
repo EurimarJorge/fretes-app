@@ -20,10 +20,6 @@ export default function App() {
       >
         <Header />
         <Layout>
-          <Typography variant='h1' component="h1">
-            FretesApp
-          </Typography>
-          <h1>Welcome to react router</h1>
           <Routes>
             <Route path="/" element={<DriverList />} />
             <Route path="/drivers" element={<DriverList />} />
