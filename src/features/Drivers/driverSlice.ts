@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '@/app/store';
 
 interface Driver {
     id: string;
@@ -30,7 +31,7 @@ const driver: Driver = {
     city: 2800
 }
 
-const drivers: Driver[] = [
+export const initialState = [
     driver,
     {...driver, id:"22222222-1122-1111-1111-111111111111", name: "Motorista2", cpf: "01406484611"},
     {...driver, id:"33333333-1122-1111-1111-111111111111", name: "Motorista3", cpf: "01406484612"},
@@ -38,9 +39,6 @@ const drivers: Driver[] = [
     {...driver, id:"55555555-1122-1111-1111-111111111111", name: "Motorista5", cpf: "01406484614"},
 ];
 
-export const initialState = {
-    drivers: [drivers],
-};
 
 const driverSlice = createSlice({
     name: 'driver',
@@ -51,5 +49,7 @@ const driverSlice = createSlice({
         deletePost(_state, _action) {},
     }
 });
+
+export const selectDrivers = (state: RootState) => state.driver;
 
 export default driverSlice.reducer;

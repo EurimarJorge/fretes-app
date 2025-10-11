@@ -1,5 +1,4 @@
-
-import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit';
+import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 import driverReducer from '../features/Drivers/driverSlice';
 
 // Add this function

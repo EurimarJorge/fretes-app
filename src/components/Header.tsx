@@ -23,8 +23,8 @@ export default function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             FretesApp
           </Typography>
-          <Button color="inherit">Sign-in</Button>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Cadastrar</Button>
+          <Button color="inherit">Entrar</Button>
         </Toolbar>
       </AppBar>
     </Box>
