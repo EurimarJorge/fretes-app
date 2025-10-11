@@ -3,7 +3,6 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import { selectDrivers } from "./driverSlice";
 import { Link } from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams, GridDeleteIcon } from '@mui/x-data-grid';
-import { GridToolbar } from "node_modules/@mui/x-data-grid/esm/components/toolbarV8/GridToolbar";
 
 export const DriverList = () => {
   const drivers = useAppSelector(selectDrivers);
