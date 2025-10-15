@@ -3,7 +3,6 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import { selectDrivers } from "./driverSlice";
 import { Link } from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams, GridDeleteIcon } from '@mui/x-data-grid';
-import { cp } from "fs";
 
 function renderNameCell(rowData: GridRenderCellParams) {
     return (
