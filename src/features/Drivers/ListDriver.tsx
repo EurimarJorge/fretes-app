@@ -3,6 +3,18 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 import { selectDrivers } from "./driverSlice";
 import { Link } from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams, GridDeleteIcon } from '@mui/x-data-grid';
+import { cp } from "fs";
+
+function renderNameCell(rowData: GridRenderCellParams) {
+    return (
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/drivers/edit/${rowData.id}`}
+      >
+        <Typography color="primary">{rowData.value}</Typography>
+      </Link>
+    );
+  }
 
 export const DriverList = () => {
   const drivers = useAppSelector(selectDrivers);
@@ -10,6 +22,11 @@ export const DriverList = () => {
   const rows: GridRowsProp = drivers.map((driver) => ({
     id: driver.id,
     name: driver.name,
+    cpf: driver.cpf,
+    birthday: driver.birthday,
+    rg: driver.rg,
+    cnpj: driver.cnpj,
+    mei: driver.mei,
     phone: driver.phone,
     city: driver.city,
     uf: driver.uf,
@@ -19,6 +36,7 @@ export const DriverList = () => {
     { field: 'name', 
       headerName: 'Nome', 
       flex: 1,
+      renderCell: renderNameCell
     },
     { field: 'phone', 
       headerName: 'Celular',
@@ -64,7 +82,7 @@ export const DriverList = () => {
         </Button>
 
       </Box>
-      <Typography variant='h3' component="h1">
+      <Typography component="h1">
         <DataGrid
           showToolbar
           initialState={{

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -22,9 +23,15 @@ export default function Header() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             FretesApp
-          </Typography>
-          <Button color="inherit">Cadastrar</Button>
-          <Button color="inherit">Entrar</Button>
+          </Typography>            
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/drivers/create"
+          >
+            Cadastrar
+          </Button>
+          <Button color="inherit" component={Link} to="/drivers/login">Entrar</Button>
         </Toolbar>
       </AppBar>
     </Box>

@@ -33,10 +33,10 @@ const driver: Driver = {
 
 export const initialState = [
     driver,
-    {...driver, id:"22222222-1122-1111-1111-111111111111", name: "Motorista2", cpf: "01406484611"},
-    {...driver, id:"33333333-1122-1111-1111-111111111111", name: "Motorista3", cpf: "01406484612"},
-    {...driver, id:"44444444-1122-1111-1111-111111111111", name: "Motorista4", cpf: "01406484613"},
-    {...driver, id:"55555555-1122-1111-1111-111111111111", name: "Motorista5", cpf: "01406484614"},
+    {...driver, id:"22222222-1122-1111-1111-111111111111", name: "Motorista2", cpf: "01406484611", birthday: "1979-08-16", rg: "m7-441.836", cnpj: "06.981.180/0001-17", mei: "06.981.180/0001-17", phone: "(34)99767-5265", zipCode: "38300001", address: "Rua do frete 2", uf: 16, city: 2800},
+    {...driver, id:"33333333-1122-1111-1111-111111111111", name: "Motorista3", cpf: "01406484612", birthday: "1981-08-16", rg: "m7-441.837", cnpj: "06.981.180/0001-18", mei: "06.981.180/0001-18", phone: "(34)99767-5266", zipCode: "38300002", address: "Rua do frete 3", uf: 16, city: 2800},
+    {...driver, id:"44444444-1122-1111-1111-111111111111", name: "Motorista4", cpf: "01406484613", birthday: "1982-08-16", rg: "m7-441.838", cnpj: "06.981.180/0001-19", mei: "06.981.180/0001-19", phone: "(34)99767-5267", zipCode: "38300003", address: "Rua do frete 4", uf: 16, city: 2800},
+    {...driver, id:"55555555-1122-1111-1111-111111111111", name: "Motorista5", cpf: "01406484614", birthday: "1983-08-16", rg: "m7-441.839", cnpj: "06.981.180/0001-20", mei: "06.981.180/0001-20", phone: "(34)99767-5268", zipCode: "38300004", address: "Rua do frete 5", uf: 16, city: 2800},
 ];
 
 
@@ -51,5 +51,10 @@ const driverSlice = createSlice({
 });
 
 export const selectDrivers = (state: RootState) => state.driver;
+
+export const selectDriverwById = (state: RootState, driverId: string) => {
+    const driver = state.driver.find(driver => driver.id === driverId);
+    return driver || null;
+};
 
 export default driverSlice.reducer;
