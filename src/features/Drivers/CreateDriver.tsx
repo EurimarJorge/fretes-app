@@ -1,22 +1,54 @@
-import { Box, Button, FormControl, Grid, Paper, TextField, Typography } from "@mui/material";
-import { Link, useParams } from "react-router";
-import { selectDriverwById } from "./driverSlice";
-import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
+import { Box, Paper, Typography } from "@mui/material";
+import { useSnackbar } from 'notistack';
 import { useState } from "react";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from "dayjs";
+import { DriverForm } from "./components/DriverForm";
+import { createDriver, Driver } from "./driverSlice";
+import { useAppDispatch } from "@/app/hooks";
 
 export const DriverCreate = () => {
-  const id = useParams().id || "";
-  const [isDisabled] = useState(false);
-  const driver = useSelector((state: RootState) => selectDriverwById(state, id));
-  const [selectedDate, setSelectedDate] = useState(driver?.birthday || "");
+
+  const dispatch = useAppDispatch();
+  const [isDisabled, setIsDisabled] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
   
+  const [driverState, setDriverState] = useState<Driver>({
+    id: "",
+    name: "",
+    cpf: "",
+    birthday: "",
+    rg: "",
+    cnpj: "",
+    mei: "",
+    phone: "",
+    zipCode: "",
+    address: "",
+    uf: 0,
+    city: 0,
+  });
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    dispatch(createDriver(driverState));
+    setIsDisabled(true);
+    enqueueSnackbar("Motorista cadastrado com sucesso!", { variant: "success" });
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target);
+    const { name, value } = e.target;
+    setDriverState({ ...driverState, [name]: value });
+  };
+
+  const handleDateChange = (name:any, date:any) => {
+    console.log(name, date);
+    setDriverState(prev => ({
+      ...prev,
+      [name]: date
+    }));
+  };
+
   return (
-    <Box display="grid" justifyContent="space-around">  
+    <Box maxWidth="lg" sx={{ mt: 4, mb: 4}}>
       <Paper>
         <Box p={2}>
           <Box mb={2}>
@@ -24,150 +56,13 @@ export const DriverCreate = () => {
           </Box>
         </Box>
 
-      <Box width="lg" sx={{ mt: 4, mb: 4}}>
-        <form>
-          <Grid container spacing={3}>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="cpf"
-                  label="CPF" 
-                  value={driver?.cpf || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker label="Data de Nascimento" 
-                    name="dtNascimento"
-                    format="DD/MM/YYYY"
-                    value={selectedDate?dayjs(selectedDate):null}
-                    onChange={(newValue) => setSelectedDate(newValue ? dayjs(newValue).format('YYYY-MM-DD') : "")}
-                  />
-                </LocalizationProvider>
-              </FormControl>
-            </Grid>
-            <Grid size={12}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="nome"
-                  label="Nome" 
-                  value={driver?.name || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="rg"
-                  label="RG" 
-                  value={driver?.rg || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="CNPJ"
-                  label="CNPJ" 
-                  value={driver?.cnpj || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="MEI"
-                  label="MEI" 
-                  value={driver?.mei || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="phone"
-                  label="Telefone" 
-                  value={driver?.phone || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="CEP"
-                  label="CEP" 
-                  value={driver?.zipCode || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={12}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="ENDERECO"
-                  label="Endereço" 
-                  value={driver?.address || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="uf"
-                  label="UF" 
-                  value={driver?.uf || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={6}>
-              <FormControl fullWidth>
-                <TextField 
-                  required
-                  name="cidade"
-                  label="Cidade" 
-                  value={driver?.city || ""}
-                  disabled={isDisabled}
-                />
-              </FormControl>
-            </Grid>
-            <Grid size={12}>
-              <Box display="flex" gap={2}>
-                <Button variant="contained" component={Link} to="/drivers">
-                  Back
-                </Button>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                // disabled={isdisabled || isLoading}
-                >
-                  {/*isLoading ? "Loading..." :*/ "Save"}
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </form>
-      </Box>
+      <DriverForm
+        driver={driverState}
+        isDisabled={isDisabled}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        handleDateChange={handleDateChange}
+      />
     </Paper>
   </Box>
 )

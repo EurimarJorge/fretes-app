@@ -27,7 +27,7 @@ export default function Header() {
           <Button 
             color="inherit" 
             component={Link} 
-            to="/drivers/create"
+            to="/register"
           >
             Cadastrar
           </Button>

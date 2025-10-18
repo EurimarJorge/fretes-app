@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
 
-interface Driver {
+export interface Driver {
     id: string;
     name: string;
     cpf: string;
@@ -44,9 +44,17 @@ const driverSlice = createSlice({
     name: 'driver',
     initialState: initialState,
     reducers: {
-        createPost(_state, _action) {},
-        updatePost(_state, _action) {},
-        deletePost(_state, _action) {},
+        createDriver(state, _action) {
+            state.push(_action.payload);
+        },
+        updateDriver(state, _action) {
+          const index = state.findIndex(driver => driver.id === _action.payload.id);
+          state[index] = _action.payload;
+        },
+        deleteDriver(state, _action) {
+          const index = state.findIndex(driver => driver.id === _action.payload.id);
+          state.splice(index, 1);
+        },
     }
 });
 
@@ -58,3 +66,4 @@ export const selectDriverwById = (state: RootState, driverId: string) => {
 };
 
 export default driverSlice.reducer;
+export const { createDriver, updateDriver, deleteDriver } = driverSlice.actions;

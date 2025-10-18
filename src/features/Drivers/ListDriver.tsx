@@ -1,6 +1,7 @@
-import { useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Box, Button, IconButton, Typography } from "@mui/material";
-import { selectDrivers } from "./driverSlice";
+import { useSnackbar } from 'notistack';
+import { deleteDriver, selectDrivers } from "./driverSlice";
 import { Link } from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams, GridDeleteIcon } from '@mui/x-data-grid';
 
@@ -17,6 +18,8 @@ function renderNameCell(rowData: GridRenderCellParams) {
 
 export const DriverList = () => {
   const drivers = useAppSelector(selectDrivers);
+  const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const rows: GridRowsProp = drivers.map((driver) => ({
     id: driver.id,
@@ -48,23 +51,30 @@ export const DriverList = () => {
         <span>{params.row.city}/{params.row.uf}</span>
       ),
     },
-    { field: 'actions', 
-      headerName: 'Ações', 
+    { field: 'id', 
+      headerName: 'Ações',
+      type: "string", 
       width: 100,
-      renderCell: handleDeleteDriver
+      renderCell: handleDeleteDriverButton
     },
   ];
 
-    function handleDeleteDriver(params: GridRenderCellParams) {
+    function handleDeleteDriverButton(params: GridRenderCellParams) {
       return (
         <IconButton
           color="warning"
-          onClick={() => console.log("Deletar motorista com ID:", params.id)}
+          onClick={() => handleDeleteDriver(params.value)}
           aria-label="deletar"
         >
           <GridDeleteIcon />
         </IconButton>
       )
+    }
+
+    function handleDeleteDriver(id:string){
+      dispatch(deleteDriver(id));
+      enqueueSnackbar("Motorista excluído com sucesso!", { variant: "success" });
+
     }
 
   return (

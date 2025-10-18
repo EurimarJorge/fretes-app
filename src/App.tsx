@@ -6,37 +6,48 @@ import { Route, Routes } from "react-router-dom";
 import { DriverList } from './features/Drivers/ListDriver';
 import { DriverCreate } from './features/Drivers/CreateDriver';
 import { DriverEdit } from './features/Drivers/EditDriver';
+import { CreateRegisters } from './features/register/CreateRegisters';
+import { SnackbarProvider } from 'notistack'
 
 export default function App() {
   return (
     <ThemeProvider theme={appTheme}>
-      <Box component={"main"}
-        sx={
-          {
-            height: "100vh",
-            backgroundColor: (theme) => theme.palette.grey[900],
-          }
-        }
+      <SnackbarProvider 
+        maxSnack={3}
+        anchorOrigin={{
+          vertical:"top",
+          horizontal:"right"
+        }}
       >
-        <Header />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<DriverList />} />
-            <Route path="/drivers" element={<DriverList />} />
-            <Route path="/drivers/create" element={<DriverCreate />} />
-            <Route path="/drivers/edit/:id" element={<DriverEdit />} />
-            <Route
-              path="*"
-              element={
-                <Box sx={{ color: "white" }}>
-                  <Typography variant="h1">404</Typography>
-                  <Typography variant="h2">Page not found</Typography>
-                </Box>
-              }
-            />
-          </Routes>
-        </Layout>
-      </Box>
+        <Box component={"main"}
+          sx={
+            {
+              height: "110vh",
+              backgroundColor: (theme) => theme.palette.grey[900],
+            }
+          }
+        >
+          <Header />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<DriverList />} />
+              <Route path="/drivers" element={<DriverList />} />
+              <Route path="/drivers/create" element={<DriverCreate />} />
+              <Route path="/drivers/edit/:id" element={<DriverEdit />} />
+              <Route path="/register" element={<CreateRegisters />} />
+              <Route
+                path="*"
+                element={
+                  <Box sx={{ color: "white" }}>
+                    <Typography variant="h1">404</Typography>
+                    <Typography variant="h2">Page not found</Typography>
+                  </Box>
+                }
+              />
+            </Routes>
+          </Layout>
+        </Box>
+      </SnackbarProvider>
     </ThemeProvider>
   )
 }
