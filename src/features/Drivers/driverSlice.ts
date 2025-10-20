@@ -53,6 +53,7 @@ const driverSlice = createSlice({
         },
         deleteDriver(state, _action) {
           const index = state.findIndex(driver => driver.id === _action.payload.id);
+          console.log(index);
           state.splice(index, 1);
         },
     }

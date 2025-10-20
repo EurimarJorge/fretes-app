@@ -7,12 +7,11 @@ export const CreateRegisters = () => {
       <Paper>
         <Box p={2}>
           <Box mb={2}>
-            <Typography variant="h4">Escolha o tipo de cadastro</Typography>
+            <Typography variant="h4">Escolha o cadastro</Typography>
           </Box>
         </Box>
-        <Box maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Box display="flex" justifyContent="center">
-            <Button 
+        <Box display="flex" justifyContent="center">
+          <Button 
             variant="contained" 
             color="secondary" 
             component={Link} 
@@ -23,29 +22,33 @@ export const CreateRegisters = () => {
           </Button>
         </Box>
         <Box display="flex" justifyContent="center">
-            <Button 
+          <Button 
             variant="contained" 
             color="secondary" 
             component={Link} 
             to="/drivers/create" 
             style={{height: "100px", width: "80%", borderRadius: "60px", marginBottom: "1rem" }}
-            >
+          >
             Cadastrar transportadora
-            </Button>
+          </Button>
         </Box>
         <Box display="flex" justifyContent="center">
-        <Button 
+          <Button 
             variant="contained" 
             color="secondary" 
             component={Link} 
             to="/drivers/create" 
             style={{height: "100px", width: "80%", borderRadius: "60px", marginBottom: "1rem" }}
-        >
+          >
             Cadastrar embarcador
-        </Button>
+          </Button>
         </Box>
-                </Box>
-            </Paper>
+        <Box display="flex" gap={2} justifyContent="center">
+          <Button variant="contained" component={Link} to="/">
+            Voltar
+          </Button>
         </Box>
-    );
+      </Paper>
+    </Box>
+  );
 }

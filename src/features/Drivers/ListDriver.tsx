@@ -72,6 +72,7 @@ export const DriverList = () => {
     }
 
     function handleDeleteDriver(id:string){
+      console.log(id);
       dispatch(deleteDriver(id));
       enqueueSnackbar("Motorista excluído com sucesso!", { variant: "success" });
 
