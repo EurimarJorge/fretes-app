@@ -5,7 +5,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import { Driver } from "../driverSlice";
-//import { DateField } from '@mui/x-date-pickers/DateField';
+import React from 'react';
+import { CNPJFormat } from "./CNPJFormat";
+import { MEIFormat } from "./MEIFormat";
+import { CPFFormat } from "./CPFFormat";
+import { RGFormat } from "./RGFormat";
+import { FoneFormat } from "./FoneFormat";
+import { CepFormat } from "./CepFormat";
+
 
 type Props = {
   driver: Driver;
@@ -31,14 +38,7 @@ export function  DriverForm({
         <Grid container spacing={3}>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="cpf"
-                label="CPF" 
-                value={driver?.cpf || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
-              />
+              <CPFFormat />
             </FormControl>
           </Grid>
           <Grid size={6}>
@@ -67,61 +67,31 @@ export function  DriverForm({
           </Grid>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="rg"
-                label="RG" 
-                value={driver?.rg || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
+              <RGFormat 
               />
             </FormControl>
           </Grid>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="cnpj"
-                label="CNPJ" 
-                value={driver?.cnpj || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
+              <CNPJFormat
               />
             </FormControl>
           </Grid>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="mei"
-                label="MEI" 
-                value={driver?.mei || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
+              <MEIFormat
               />
             </FormControl>
           </Grid>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="phone"
-                label="Telefone" 
-                value={driver?.phone || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
+              <FoneFormat 
               />
             </FormControl>
           </Grid>
           <Grid size={6}>
             <FormControl fullWidth>
-              <TextField 
-                required
-                name="zipCode"
-                label="CEP" 
-                value={driver?.zipCode || ""}
-                disabled={isDisabled}
-                onChange={handleChange}
+              <CepFormat
               />
             </FormControl>
           </Grid>
