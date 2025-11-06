@@ -8,6 +8,9 @@ import { DriverCreate } from './features/Drivers/CreateDriver';
 import { DriverEdit } from './features/Drivers/EditDriver';
 import { CreateRegisters } from './features/register/CreateRegisters';
 import { SnackbarProvider } from 'notistack'
+import { CarrierList } from './features/Carriers/ListCarrier';
+import { CarrierCreate } from './features/Carriers/CreateCarrier';
+import { CarrierEdit } from './features/Carriers/EditCarrier';
 
 export default function App() {
   return (
@@ -35,6 +38,12 @@ export default function App() {
               <Route path="/drivers/create" element={<DriverCreate />} />
               <Route path="/drivers/edit/:id" element={<DriverEdit />} />
               <Route path="/register" element={<CreateRegisters />} />
+
+              <Route path="/carriers" element={<CarrierList />} />
+              <Route path="/carriers/create" element={<CarrierCreate />} />
+              <Route path="/carriers/edit/:id" element={<CarrierEdit />} />
+              <Route path="/register" element={<CreateRegisters />} />
+              
               <Route
                 path="*"
                 element={

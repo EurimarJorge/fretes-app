@@ -26,7 +26,7 @@ export const CreateRegisters = () => {
             variant="contained" 
             color="secondary" 
             component={Link} 
-            to="/drivers/create" 
+            to="/carriers/create" 
             style={{height: "100px", width: "80%", borderRadius: "60px", marginBottom: "1rem" }}
           >
             Cadastrar transportadora
@@ -37,7 +37,7 @@ export const CreateRegisters = () => {
             variant="contained" 
             color="secondary" 
             component={Link} 
-            to="/drivers/create" 
+            to="/carriers/create" 
             style={{height: "100px", width: "80%", borderRadius: "60px", marginBottom: "1rem" }}
           >
             Cadastrar embarcador

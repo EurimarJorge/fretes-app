@@ -61,7 +61,7 @@ const driverSlice = createSlice({
 
 export const selectDrivers = (state: RootState) => state.driver;
 
-export const selectDriverwById = (state: RootState, driverId: string) => {
+export const selectDriverById = (state: RootState, driverId: string) => {
     const driver = state.driver.find(driver => driver.id === driverId);
     return driver || null;
 };

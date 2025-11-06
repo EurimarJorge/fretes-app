@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import { Driver } from "../driverSlice";
 import React from 'react';
-import { CNPJFormat } from "./CNPJFormat";
+import { CNPJFormat } from "../../components/CNPJFormat";
 import { MEIFormat } from "./MEIFormat";
 import { CPFFormat } from "./CPFFormat";
 import { RGFormat } from "./RGFormat";

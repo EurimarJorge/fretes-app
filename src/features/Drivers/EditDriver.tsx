@@ -5,13 +5,13 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { DriverForm } from "./components/DriverForm";
-import { Driver, selectDriverwById, updateDriver } from "./driverSlice";
+import { Driver, selectDriverById, updateDriver } from "./driverSlice";
 import { useAppDispatch } from "@/app/hooks";
 
 export const DriverEdit = () => {
   const id = useParams().id || "";
   const [isDisabled, setIsDisabled] = useState(false);
-  const driver = useSelector((state: RootState) => selectDriverwById(state, id));
+  const driver = useSelector((state: RootState) => selectDriverById(state, id));
   const [driverState, setDriverState] = useState<Driver>(driver!);
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
