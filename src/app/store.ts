@@ -1,6 +1,6 @@
 import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 import driverReducer from '../features/Drivers/driverSlice';
-import carrierReducer from '../features/Carriers/carrierSlice';
+import carrierReducer from '../features/carriers/carrierSlice';
 
 
 // Add this function

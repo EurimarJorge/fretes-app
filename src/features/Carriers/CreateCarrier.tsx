@@ -1,12 +1,12 @@
 import { Box, Button, FormControl, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useSnackbar } from 'notistack';
 import { useState } from "react";
-import { createCarrier, Carrier } from "./carrierSlice";
 import { useAppDispatch } from "@/app/hooks";
 import { CNPJFormat } from "../components/CNPJFormat";
 import { FoneFormat } from "../Drivers/components/FoneFormat";
 import { CepFormat } from "../Drivers/components/CepFormat";
 import { Link } from "react-router-dom";
+import { Carrier, createCarrier } from "./carrierSlice";
 
 export const CarrierCreate = () => {
 

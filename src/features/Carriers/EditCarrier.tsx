@@ -4,11 +4,11 @@ import { Box, Button, FormControl, Grid, Paper, TextField, Typography } from "@m
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router";
-import { Carrier, selectCarrierById, updateCarrier } from "./carrierSlice";
 import { useAppDispatch } from "@/app/hooks";
 import { CNPJFormat } from "../components/CNPJFormat";
 import { FoneFormat } from "../Drivers/components/FoneFormat";
 import { CepFormat } from "../Drivers/components/CepFormat";
+import { Carrier, selectCarrierById, updateCarrier } from "./carrierSlice";
 
 export const CarrierEdit = () => {
   const id = useParams().id || "";

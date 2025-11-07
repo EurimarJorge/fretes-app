@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import { useSnackbar } from 'notistack';
-import { deleteCarrier, selectCarriers } from "./carrierSlice";
 import { Link } from "react-router-dom";
 import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams, GridDeleteIcon } from '@mui/x-data-grid';
+import { deleteCarrier, selectCarriers } from "./carrierSlice";
 
 function renderNameCell(rowData: GridRenderCellParams) {
     return (

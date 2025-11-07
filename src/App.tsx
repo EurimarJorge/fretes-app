@@ -8,9 +8,9 @@ import { DriverCreate } from './features/Drivers/CreateDriver';
 import { DriverEdit } from './features/Drivers/EditDriver';
 import { CreateRegisters } from './features/register/CreateRegisters';
 import { SnackbarProvider } from 'notistack'
-import { CarrierList } from './features/Carriers/ListCarrier';
-import { CarrierCreate } from './features/Carriers/CreateCarrier';
-import { CarrierEdit } from './features/Carriers/EditCarrier';
+import { CarrierList } from './features/carriers/ListCarrier';
+import { CarrierCreate } from './features/carriers/CreateCarrier';
+import { CarrierEdit } from './features/carriers/EditCarrier';
 
 export default function App() {
   return (
