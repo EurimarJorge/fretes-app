@@ -22,6 +22,7 @@ export const CarrierEdit = () => {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(updateCarrier(carrierState));
+    setIsLoading(false);
     setIsDisabled(true);
     enqueueSnackbar("Transpotadora editada com sucesso!", { variant: "success" });
   }

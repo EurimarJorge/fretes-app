@@ -28,6 +28,7 @@ export const CarrierCreate = () => {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     dispatch(createCarrier(carrierState));
+    setIsLoading(false);
     setIsDisabled(true);
     enqueueSnackbar("Transportadora cadastrada com sucesso!", { variant: "success" });
   }
